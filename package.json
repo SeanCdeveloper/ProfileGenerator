@@ -1,0 +1,22 @@
+{
+  "name": "profilegenerator",
+  "version": "1.0.0",
+  "description": "# Unit 09 Node.js and ES6+ Homework: Developer Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanCdeveloper/ProfileGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanCdeveloper/ProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/SeanCdeveloper/ProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4"
+  }
+}
