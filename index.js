@@ -19,24 +19,43 @@ inquirer
    */
    ])
    .then(({username}) => {
-        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+       // const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+       const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then(res => {
-            console.log(res)
-            const repoNames = res.data.map(repo => repo.name + "\n");
+           // console.log(res)
+            //const repoNames = res.data.map(repo => repo.name + "\n");
+        
+        const { login, followers, following, bio, location, blog } = res.data;
+        console.log(login, followers, following, bio, location, blog);
             fs.writeFile("repos.txt", repoNames, (err, data) => {
                 if (err) {
                     console.log(err);
                 }
                 console.log(`You saved ${repoNames.length}`);
-            });
+            }); 
         });
    });
    
 
-   
 
+  // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
 
-   
+  /* 
+
+Completed Stuff
+
+* Number of repositories    
+
+* followers
+
+* login
+
+* bio
+
+* location 
+
+* 
+
 
 
 /* 
