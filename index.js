@@ -9,8 +9,7 @@ inquirer
        message: "Enter your GitHub username",
        default: "SeanCdeveloper",
        name: "username"
-    }
-    // Add colors 
+   }
    /*
     ,
    {
