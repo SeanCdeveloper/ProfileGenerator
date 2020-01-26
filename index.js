@@ -7,8 +7,10 @@ inquirer
    {
        type: "input",
        message: "Enter your GitHub username",
+       default: "SeanCdeveloper",
        name: "username"
     }
+    // Add colors 
    /*
     ,
    {
@@ -24,10 +26,19 @@ inquirer
         axios.get(queryUrl).then(res => {
            // console.log(res)
             //const repoNames = res.data.map(repo => repo.name + "\n");
-        
         const { login, followers, following, bio, location, blog } = res.data;
         console.log(login, followers, following, bio, location, blog);
-            fs.writeFile("repos.txt", repoNames, (err, data) => {
+    
+        const repoURL = `https://api.github.com/users/${login}/repos`;
+        axios.get(repoURL).then(function(response) {
+            const repoNames = response.data.map(function(repo) {
+                return repo.name;
+            });
+            const repoNamesStr = repoNames.join("\n");
+            console.log("REPOS: \n" + repoNamesStr);
+        });
+        
+        fs.writeFile("repos.txt", repoNames, (err, data) => {
                 if (err) {
                     console.log(err);
                 }
@@ -37,7 +48,7 @@ inquirer
    });
    
 
-
+// avatar url
   // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
 
   /* 
