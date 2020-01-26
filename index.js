@@ -3,19 +3,25 @@ const axios = require("axios");
 const inquirer = require("inquirer");
 
 inquirer
-   .prompt({
+   .prompt([
+   {
        type: "input",
        message: "Enter your GitHub username",
        name: "username"
-   },
+    }
+   /*
+    ,
    {
        type: "input",
        message: "What is your favorite color?",
        name: "username"
-   })
+   }
+   */
+   ])
    .then(({username}) => {
         const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
         axios.get(queryUrl).then(res => {
+            console.log(res)
             const repoNames = res.data.map(repo => repo.name + "\n");
             fs.writeFile("repos.txt", repoNames, (err, data) => {
                 if (err) {
@@ -25,7 +31,11 @@ inquirer
             });
         });
    });
-    
+   
+
+   
+
+
    
 
 
