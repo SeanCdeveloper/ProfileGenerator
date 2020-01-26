@@ -12,8 +12,7 @@ inquirer
        type: "input",
        message: "What is your favorite color?",
        name: "username"
-   }
-   )
+   })
    .then(({username}) => {
         const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
         axios.get(queryUrl).then(res => {
@@ -30,6 +29,21 @@ inquirer
    
 
 
+/* 
+
+PDF Resume from Github Profile 
+
+# bio Image from GitHub Profile
+
+# User's location 
+
+# Link to GitHub Profiile
+
+# Resume Includes: # of public repositories, followers, GitHub stars, 
+
+# Background-Color of PDF matches provided color.  
+
+*/ 
 
    /* Taken From Develop part of homework Repo 
 
@@ -44,4 +58,5 @@ function writeToFile(fileName, data) {
 function init() {
 
 init();
+
 */
