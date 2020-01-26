@@ -37,7 +37,7 @@ inquirer
             console.log("REPOS: \n" + repoNamesStr);
         });
         
-        fs.writeFile("generateHTML.js", repoNames, (err, data) => {
+        fs.writeFile("repos.txt", repoNames, (err, data) => {
                 if (err) {
                     console.log(err);
                 }
@@ -46,9 +46,11 @@ inquirer
         });
    });
    
-   
 
    
+
+
+
 // avatar url
   // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
 
