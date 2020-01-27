@@ -20,31 +20,41 @@ inquirer
    */
    ])
    .then(({username}) => {
-       // const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
        const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then(res => {
-           // console.log(res)
-            //const repoNames = res.data.map(repo => repo.name + "\n");
-        const { login, followers, following, bio, location, blog, public_repos} = res.data;
-        console.log(login, followers, following, bio, location, blog, public_repos);
+            //console.log(res.data)
+       // const repoNames = res.data.map(repo => repo.name + "\n");
+        const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
+        console.log(login, followers, following, bio, location, blog, public_repos, id);
     
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
+          //  console.log(response);
             const repoNames = response.data.map(function(repo) {
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
             console.log("REPOS: \n" + repoNamesStr);
+
+        const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
+        axios.get(avatarURL).then(function(response) {
+            console.log(response.data);
         });
-        
-        fs.writeFile("generateHTML.js", repoNames, (err, data) => {
+
+        const starredURL = `https://api.github.com/users/${login}/starred`;
+        axios.get(starredURL).then(function(response) {
+            console.log(response.data);
+        });
+    });    
+});
+        fs.writeFile("generate1.js", repoNames, (err, data) => {
                 if (err) {
                     console.log(err);
                 }
                 console.log(`You saved ${repoNames.length}`);
             }); 
         });
-   });
+    
    
 
 
