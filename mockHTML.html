@@ -188,6 +188,14 @@
                 height: 4em;
             }
 
+            #userDiv {
+                background: gold;
+                height: 300px;
+                transform: translateY(3em);
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+
             /*
             .card-zInd {
                 background: skyblue;
@@ -226,10 +234,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
-                    <p>hello.</p>
+                    <span>
+                        <div id="userDiv" class="card">
+                            <div class="card-body">
+                                <div id="imgWrap">
+                                    <img src="https://place-hold.it/100x100" style="border-radius: 50%; height: 8em; transform: translateX(16em);"
+                                        alt="userPic">
+                                </div>
+                                <br>
+                                This is some text within a card body.
+                            </div>
+                        </div>
+                    </span>
                 </div>
                 <div class="col-md-12" style="background: skyblue; width:100%; height: 20em;">
-                    <p style="background: gold; text-align: center">This is a description</p>
+                    <p style="background: gold; text-align: center; margin-top: 50px;">This is a description</p>
                     <div id="inDiv2a" class="card">
                         <div class="card-body">
                             1
