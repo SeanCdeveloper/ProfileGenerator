@@ -12,13 +12,16 @@ The user will be prompted for a favorite color, which will be used as the backgr
 
 The PDF will be populated with the following:
 
-* [] Profile image
+* [√] Profile image
 * [√] User name
+
 * Links to the following:
   * [] User location via Google Maps
   * [] User GitHub profile
   * [√] User blog
 * [√] User bio
+
+# Data Displayed in Cards:
 * [√] Number of public repositories
 * [√] Number of followers
 * [] Number of GitHub stars
