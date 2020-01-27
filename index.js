@@ -25,8 +25,8 @@ inquirer
         axios.get(queryUrl).then(res => {
            // console.log(res)
             //const repoNames = res.data.map(repo => repo.name + "\n");
-        const { login, followers, following, bio, location, blog } = res.data;
-        console.log(login, followers, following, bio, location, blog);
+        const { login, followers, following, bio, location, blog, public_repos} = res.data;
+        console.log(login, followers, following, bio, location, blog, public_repos);
     
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
@@ -46,13 +46,16 @@ inquirer
         });
    });
    
-   
+
 
    
 // avatar url
   // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
 
-  /* 
+
+// My avatar_url:  "avatar_url": "https://avatars1.githubusercontent.com/u/55586107?v=4
+
+/* 
 
 Completed Stuff
 

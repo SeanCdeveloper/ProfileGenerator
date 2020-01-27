@@ -19,7 +19,7 @@ The PDF will be populated with the following:
   * [] User GitHub profile
   * [√] User blog
 * [√] User bio
-* [] Number of public repositories
+* [√] Number of public repositories
 * [√] Number of followers
 * [] Number of GitHub stars
 * [√] Number of users following
