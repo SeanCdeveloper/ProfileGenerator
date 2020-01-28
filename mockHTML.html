@@ -41,6 +41,7 @@
             .wrapper {
                 height: 100%;
             }
+
             /* This is the #userDiv, below, holding the main bio information  */
             .wrapper {
                 /*background-color: ${colors[data.color].wrapperBackground};*/
@@ -167,28 +168,16 @@
                 /*background-color: ${colors[data.color].headerBackground};*/
                 /*color: ${colors[data.color].headerColor};*/
                 margin: 20px;
-            }
-
-            #inDiv2a {
-                background: #d3d3d3;
-                width: 25%;
-                border-radius: 5px;
-                display: inline-block;
-                margin-left: 8em;
-                margin-top: 2em;
-                height: 4em;
-            }
-
-            #inDiv2b {
-                background: #d3d3d3;
+                background: black;
                 width: 25%;
                 display: inline-block;
-                border-radius: 8px;
-                margin-left: 8em;
-                margin-top: 5%;
-                height: 4em;
+                height: 5em;
             }
 
+            #cardWrap {
+                text-align: center;
+            }
+     
             #userDiv {
                 background: gold;
                 height: 300px;
@@ -235,56 +224,58 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
-                        <div id="userDiv" class="card">
-                            <div class="card-body">
-                                <div id="imgWrap" class="photo-header">
-                                    <!--Image is Hard-Coded for Now.  Change this later. -->
-                                    <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="photo-header" 
-                                        alt="userPic">
-                                </div>
-                                <br>
-                                <h1 class="photo-header">HI</h1> 
-                                <h1 class="photo-header">Second h1</h1>
-                                <h2 class="photo-header">H2 Element</h2>
-                                <br>
-                                <p class="workExp-date">This is where work experience goes.</p>
-                                <ul class="nav links-nav justify-content-center">
-                                    <li class="nav-link">
-                                      <a class="nav-link active" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-link">
-                                      <a class="nav-link active" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-link">
-                                      <a class="nav-link active" href="#">Link</a>
-                                    </li>
-                                </ul>
+                    <div id="userDiv" class="card">
+                        <div class="card-body">
+                            <div id="imgWrap" class="photo-header">
+                                <!--Image is Hard-Coded for Now.  Change this later. -->
+                                <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="photo-header"
+                                    alt="userPic">
                             </div>
+                            <br>
+                            <h1 class="photo-header">HI</h1>
+                            <h1 class="photo-header">Second h1</h1>
+                            <h2 class="photo-header">H2 Element</h2>
+                            <br>
+                            <p class="workExp-date">This is where work experience goes.</p>
+                            <ul class="nav links-nav justify-content-center">
+                                <li class="nav-link">
+                                    <a class="nav-link active" href="#">Link</a>
+                                </li>
+                                <li class="nav-link">
+                                    <a class="nav-link active" href="#">Link</a>
+                                </li>
+                                <li class="nav-link">
+                                    <a class="nav-link active" href="#">Link</a>
+                                </li>
+                            </ul>
                         </div>
+                    </div>
                 </div>
                 <div class="col-md-12" style="background: skyblue; width:100%; height: 20em;">
-                    <div id="pwrap">
-                    <p style="background: gold; text-align: center; margin-top: 50px;">This is a description</p>
+                    <div id="h3wrap">
+                        <h4 style="background: gold; text-align: center; margin-top: 50px;">This is a description</h4>
                     </div>
-                    <div id="inDiv2a" class="card">
-                        <div class="card-body">
-                            1
+                    <div id="cardWrap">
+                        <div id="inDiv2a" class="card-background">
+                            <div class="card-body">
+                                1
+                            </div>
                         </div>
-                    </div>
-                    <div id="inDiv2a" class="card">
-                        <div class="card-body">
-                            2
+                        <div id="inDiv2a" class="card-background">
+                            <div class="card-body">
+                                2
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div id="inDiv2b" class="card">
-                        <div class="card-body">
-                            3
+                        <br>
+                        <div id="inDiv2b" class="card-background">
+                            <div class="card-body">
+                                3
+                            </div>
                         </div>
-                    </div>
-                    <div id="inDiv2b" class="card-inDiv2b">
-                        <div class="card-body">
-                            4
+                        <div id="inDiv2b" class="card-background">
+                            <div class="card-body">
+                                4
+                            </div>
                         </div>
                     </div>
                 </div>
