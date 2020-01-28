@@ -45,7 +45,12 @@
             /* This is the #userDiv, below, holding the main bio information  */
             .wrapper {
                 /*background-color: ${colors[data.color].wrapperBackground};*/
-                padding-top: 100px;
+                padding-top: 3.5em;
+                /* remove background below*/
+                background: gold;
+                margin-left: 5%;
+                margin-right: 5%;
+                transform: translateY(1em);
             }
 
             body {
@@ -177,30 +182,7 @@
             #cardWrap {
                 text-align: center;
             }
-     
-            #userDiv {
-                background: gold;
-                height: 300px;
-                transform: translateY(3em);
-                margin-left: 5%;
-                margin-right: 5%;
-            }
 
-            /*
-            .card-zInd {
-                background: skyblue;
-                z-index: 2;
-                transform: translateY(-250px);
-                height: 300px;
-            }
-*/
-            /*
-            #bldNCode {
-                color: black;
-                text-align: center;
-                font-size: 16pt;
-            }
-*/
             .col {
                 flex: 1;
                 text-align: center;
@@ -224,7 +206,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
-                    <div id="userDiv" class="card">
+                    <!--Was id="userDiv"-->
+                    <div id="userDiv" class="card wrapper">
                         <div class="card-body">
                             <div id="imgWrap" class="photo-header">
                                 <!--Image is Hard-Coded for Now.  Change this later. -->
