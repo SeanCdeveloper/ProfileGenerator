@@ -173,10 +173,17 @@
                 /*background-color: ${colors[data.color].headerBackground};*/
                 /*color: ${colors[data.color].headerColor};*/
                 margin: 20px;
-                background: black;
-                width: 25%;
+                /* change this later*/
+                background: #d3d3d3;
+                width: 40%;
                 display: inline-block;
-                height: 5em;
+            }
+
+            #gitDisplay {
+                font-family: 'BioRhyme';
+                font-size: 16pt;
+                height: 2.5em;
+                font-weight: bold;
             }
 
             #cardWrap {
@@ -205,7 +212,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
+                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 24em;">
                     <!--Was id="userDiv"-->
                     <div id="userDiv" class="card wrapper">
                         <div class="card-body">
@@ -220,7 +227,7 @@
                             <h2 class="photo-header">H2 Element</h2>
                             <br>
                             <p class="workExp-date">This is where work experience goes.</p>
-                            <ul class="nav links-nav justify-content-center">
+                            <ul style="margin-top: 0" class="nav links-nav justify-content-center">
                                 <li class="nav-link">
                                     <a class="nav-link active" href="#">Link</a>
                                 </li>
@@ -234,88 +241,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="background: skyblue; width:100%; height: 20em;">
+                <div class="col-md-12" style="background: #065788; width:100%; height: 24em;">
                     <div id="h3wrap">
                         <h4 style="background: gold; text-align: center; margin-top: 50px;">This is a description</h4>
                     </div>
                     <div id="cardWrap">
                         <div id="inDiv2a" class="card-background">
-                            <div class="card-body">
-                                1
+                            <div id="gitDisplay" class="card-body">
+                                Public Repositories
+                                <span></span>
                             </div>
                         </div>
                         <div id="inDiv2a" class="card-background">
-                            <div class="card-body">
-                                2
+                            <div id="gitDisplay" class="card-body">
+                                Followers
+                                <span></span>
                             </div>
                         </div>
                         <br>
                         <div id="inDiv2b" class="card-background">
-                            <div class="card-body">
-                                3
+                            <div id="gitDisplay" class="card-body">
+                                GitHub Stars
+                                <span></span>
                             </div>
                         </div>
                         <div id="inDiv2b" class="card-background">
-                            <div class="card-body">
-                                4
+                            <div id="gitDisplay" class="card-body">
+                                Following 
+                                <span></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
-                    <p>hello.</p>
+                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 24em;">
                 </div>
             </div>
         </div>
     </body>
 
     </html>
-    <!--
-<div class="wrapper">
-            <div class="container">
-                <div class="card-background">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div id="zInd" class="card-zInd">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div id="up" class="card-background">
-                    <div class="card-body">
-                        <p id="bldNCode">I am text. </p>
-                        <div class="card-inDiv2a">
-                            <div class="card-body">
-                                1
-                            </div>
-                        </div>
-                        <div class="card-inDiv2a">
-                            <div class="card-body">
-                                2
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card-inDiv2b">
-                            <div class="card-body">
-                                3
-                            </div>
-                        </div>
-                        <div class="card-inDiv2b">
-                            <div class="card-body">
-                                4
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-background">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    -->
