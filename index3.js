@@ -20,7 +20,6 @@ return inquirer.prompt([
        name: "colors",
        choices: [
          //"green", "blue", "pink", "red"
-
             {name: "green", value: "green"}, {name: "blue", value: "blue"},
             {name: "pink", value: "pink"}, {name: "red", value: "red"}    
        ]
@@ -36,12 +35,12 @@ return inquirer.prompt([
     
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
-          //  console.log(response);
+            console.log(response);
             const repoNames = response.data.map(function(repo) {
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
-            console.log("REPOS: \n" + repoNamesStr);
+            //console.log("REPOS: \n" + repoNamesStr);
 
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         axios.get(avatarURL).then(function(response) {
@@ -95,7 +94,7 @@ return inquirer.prompt([
         }
       };
       /* Was only data in parameter below */
-      function generateHTML(colors) {
+      function generateHTML(data) {
         return `<!DOCTYPE html>
         <html lang="en">
         
@@ -131,10 +130,10 @@ return inquirer.prompt([
         
                 /* This is the #userDiv, below, holding the main bio information  */
                 .wrapper {
-                    /*background-color: ${colors[data.color].wrapperBackground};*/
+                    background-color: ${colors[data.color].wrapperBackground};
                     padding-top: 3.5em;
                     /* remove background below*/
-                    background: gold;
+                    /*background: gold;*/
                     margin-left: 5%;
                     margin-right: 5%;
                     transform: translateY(2em);
@@ -194,8 +193,8 @@ return inquirer.prompt([
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
-                    /* background-color: ${colors[data.color].headerBackground};*/
-                    /*color: ${colors[data.color].headerColor};*/
+                    background-color: ${colors[data.color].headerBackground};
+                    color: ${colors[data.color].headerColor};
                     padding: 10px;
                     width: 95%;
                     border-radius: 6px;
@@ -207,7 +206,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    /*border: 6px solid ${colors[data.color].photoBorderColor};*/
+                    border: 6px solid ${colors[data.color].photoBorderColor};
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
@@ -262,8 +261,8 @@ return inquirer.prompt([
                 .card-background {
                     padding: 20px;
                     border-radius: 6px;
-                    /*background-color: ${colors[data.color].headerBackground};*/
-                    /*color: ${colors[data.color].headerColor};*/
+                    background-color: ${colors[data.color].headerBackground};
+                    color: ${colors[data.color].headerColor};
                     margin: 20px;
                     /* change this later*/
                     background: #d3d3d3;
@@ -377,9 +376,9 @@ return inquirer.prompt([
    async function init() {
     console.log("hi")
     try {
-      const colors = await promptUser();
+      const data = await promptUser();
   
-      const html = generateHTML(colors);
+      const html = generateHTML(data);
   
       await writeFileAsync("index1.html", html);
   
@@ -392,7 +391,6 @@ return inquirer.prompt([
   init();   
      
 
-    
 
 
    

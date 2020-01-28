@@ -20,9 +20,8 @@ return inquirer.prompt([
        name: "colors",
        choices: [
          //"green", "blue", "pink", "red"
-
             {name: "green", value: "green"}, {name: "blue", value: "blue"},
-            {name: "pink", value: "pink"}, {name: "red", value: "red"}    
+            {name: "pink", value: "pink"}, {name: "red", value: "red"}  
        ]
    }
    ])
@@ -51,6 +50,7 @@ return inquirer.prompt([
         const starredURL = `https://api.github.com/users/${login}/starred`;
         axios.get(starredURL).then(function(response) {
             console.log(response.data);
+            console.log(response.data.length);
         }); 
     });    
 });
