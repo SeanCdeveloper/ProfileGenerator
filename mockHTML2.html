@@ -41,7 +41,7 @@
             .wrapper {
                 height: 100%;
             }
-            /* This is the #userDiv, below, holding the main bio information  */
+
             .wrapper {
                 /*background-color: ${colors[data.color].wrapperBackground};*/
                 padding-top: 100px;
@@ -108,8 +108,8 @@
             }
 
             .photo-header img {
-                width: 150px;
-                height: 150px;
+                width: 250px;
+                height: 250px;
                 border-radius: 50%;
                 object-fit: cover;
                 margin-top: -75px;
@@ -142,8 +142,7 @@
             .workExp-date {
                 font-style: italic;
                 font-size: .7em;
-                /* was set to "left"*/
-                text-align: center;
+                text-align: right;
                 margin-top: 10px;
             }
 
@@ -237,28 +236,13 @@
                 <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
                         <div id="userDiv" class="card">
                             <div class="card-body">
-                                <div id="imgWrap" class="photo-header">
+                                <div id="imgWrap">
                                     <!--Image is Hard-Coded for Now.  Change this later. -->
-                                    <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="photo-header" 
+                                    <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="img-fluid" style="border-radius: 50%; height: 8em; border: 3px inset gold;"
                                         alt="userPic">
                                 </div>
                                 <br>
-                                <h1 class="photo-header">HI</h1> 
-                                <h1 class="photo-header">Second h1</h1>
-                                <h2 class="photo-header">H2 Element</h2>
-                                <br>
-                                <p class="workExp-date">This is where work experience goes.</p>
-                                <ul class="nav links-nav justify-content-center">
-                                    <li class="nav-link">
-                                      <a class="nav-link active" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-link">
-                                      <a class="nav-link active" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-link">
-                                      <a class="nav-link active" href="#">Link</a>
-                                    </li>
-                                </ul>
+                                This is some text. 
                             </div>
                         </div>
                 </div>
