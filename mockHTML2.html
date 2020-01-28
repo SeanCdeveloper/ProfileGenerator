@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>mockHTML</title>
+    <title>mockHTML2</title>
 </head>
 
 <body>
@@ -42,13 +42,19 @@
                 height: 100%;
             }
 
+            /* This is the #userDiv, below, holding the main bio information  */
             .wrapper {
                 /*background-color: ${colors[data.color].wrapperBackground};*/
-                padding-top: 100px;
+                padding-top: 3.5em;
+                /* remove background below*/
+                background: gold;
+                margin-left: 5%;
+                margin-right: 5%;
+                transform: translateY(2em);
             }
 
             body {
-                background-color: white;
+                background: rgb(82, 86, 89);
                 -webkit-print-color-adjust: exact !important;
                 font-family: 'Cabin', sans-serif;
             }
@@ -96,7 +102,8 @@
             .photo-header {
                 position: relative;
                 margin: 0 auto;
-                margin-bottom: -50px;
+                /* Was -50px, Below */
+                margin-bottom: -25px;
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
@@ -108,13 +115,13 @@
             }
 
             .photo-header img {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
                 border-radius: 50%;
                 object-fit: cover;
                 margin-top: -75px;
                 /*border: 6px solid ${colors[data.color].photoBorderColor};*/
-                box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+                box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
             }
 
             .photo-header h1,
@@ -141,8 +148,9 @@
 
             .workExp-date {
                 font-style: italic;
-                font-size: .7em;
-                text-align: right;
+                font-size: 1em;
+                /* was set to "left"*/
+                text-align: center;
                 margin-top: 10px;
             }
 
@@ -160,57 +168,33 @@
                 margin-bottom: 20px;
             }
 
+            #infoRow {
+                padding-top: 1em;
+            }
+
             .card-background {
                 padding: 20px;
                 border-radius: 6px;
                 /*background-color: ${colors[data.color].headerBackground};*/
                 /*color: ${colors[data.color].headerColor};*/
                 margin: 20px;
-            }
-
-            #inDiv2a {
+                /* change this later*/
                 background: #d3d3d3;
-                width: 25%;
-                border-radius: 5px;
+                width: 40%;
                 display: inline-block;
-                margin-left: 8em;
-                margin-top: 2em;
-                height: 4em;
             }
 
-            #inDiv2b {
-                background: #d3d3d3;
-                width: 25%;
-                display: inline-block;
-                border-radius: 8px;
-                margin-left: 8em;
-                margin-top: 5%;
-                height: 4em;
-            }
-
-            #userDiv {
-                background: gold;
-                height: 300px;
-                transform: translateY(3em);
-                margin-left: 5%;
-                margin-right: 5%;
-            }
-
-            /*
-            .card-zInd {
-                background: skyblue;
-                z-index: 2;
-                transform: translateY(-250px);
-                height: 300px;
-            }
-*/
-            /*
-            #bldNCode {
-                color: black;
-                text-align: center;
+            #gitDisplay {
+                font-family: 'BioRhyme';
                 font-size: 16pt;
+                height: 2.5em;
+                font-weight: bold;
             }
-*/
+
+            #cardWrap {
+                text-align: center;
+            }
+
             .col {
                 flex: 1;
                 text-align: center;
@@ -233,99 +217,70 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
-                        <div id="userDiv" class="card">
-                            <div class="card-body">
-                                <div id="imgWrap">
-                                    <!--Image is Hard-Coded for Now.  Change this later. -->
-                                    <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="img-fluid" style="border-radius: 50%; height: 8em; border: 3px inset gold;"
-                                        alt="userPic">
-                                </div>
-                                <br>
-                                This is some text. 
+                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 24em;">
+                    <!--Was id="userDiv"-->
+                    <div id="userDiv" class="card wrapper">
+                        <div class="card-body">
+                            <div id="imgWrap" class="photo-header">
+                                <!--Image is Hard-Coded for Now.  Change this later. -->
+                                <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="photo-header"
+                                    alt="userPic">
+                            </div>
+                            <div id="infoRow" class="row">
+                                <h3 class="photo-header">HI!</h3>
+                                <h2 class="photo-header">My name is Sean Cumming!</h1>
+                                <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
+                                <ul style="margin-top: 0" class="nav links-nav justify-content-center">
+                                    <li class="nav-link">
+                                        <a class="nav-link active" href="#">Link</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a class="nav-link active" href="#">Link</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a class="nav-link active" href="#">Link</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                </div>
-                <div class="col-md-12" style="background: skyblue; width:100%; height: 20em;">
-                    <div id="pwrap">
-                    <p style="background: gold; text-align: center; margin-top: 50px;">This is a description</p>
-                    </div>
-                    <div id="inDiv2a" class="card">
-                        <div class="card-body">
-                            1
-                        </div>
-                    </div>
-                    <div id="inDiv2a" class="card">
-                        <div class="card-body">
-                            2
-                        </div>
-                    </div>
-                    <br>
-                    <div id="inDiv2b" class="card">
-                        <div class="card-body">
-                            3
-                        </div>
-                    </div>
-                    <div id="inDiv2b" class="card-inDiv2b">
-                        <div class="card-body">
-                            4
-                        </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 20em;">
-                    <p>hello.</p>
+                <div class="col-md-12" style="background: #065788; width:100%; height: 24em;">
+                    <div id="h3wrap">
+                        <h4 style="background: gold; text-align: center; margin-top: 50px;">This is a description.</h4>
+                    </div>
+                    <div id="cardWrap">
+                        <div id="inDiv2a" class="card-background">
+                            <div id="gitDisplay" class="card-body">
+                                Public Repositories
+                                <span></span>
+                            </div>
+                        </div>
+                        <div id="inDiv2a" class="card-background">
+                            <div id="gitDisplay" class="card-body">
+                                Followers
+                                <span></span>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="inDiv2b" class="card-background">
+                            <div id="gitDisplay" class="card-body">
+                                GitHub Stars
+                                <span></span>
+                            </div>
+                        </div>
+                        <div id="inDiv2b" class="card-background">
+                            <div id="gitDisplay" class="card-body">
+                                Following
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 24em;">
                 </div>
             </div>
         </div>
     </body>
 
     </html>
-    <!--
-<div class="wrapper">
-            <div class="container">
-                <div class="card-background">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div id="zInd" class="card-zInd">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div id="up" class="card-background">
-                    <div class="card-body">
-                        <p id="bldNCode">I am text. </p>
-                        <div class="card-inDiv2a">
-                            <div class="card-body">
-                                1
-                            </div>
-                        </div>
-                        <div class="card-inDiv2a">
-                            <div class="card-body">
-                                2
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card-inDiv2b">
-                            <div class="card-body">
-                                3
-                            </div>
-                        </div>
-                        <div class="card-inDiv2b">
-                            <div class="card-body">
-                                4
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-background">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    -->

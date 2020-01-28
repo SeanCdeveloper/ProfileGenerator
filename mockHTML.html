@@ -102,7 +102,8 @@
             .photo-header {
                 position: relative;
                 margin: 0 auto;
-                margin-bottom: -50px;
+                /* Was -50px, Below */
+                margin-bottom: -25px;
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
@@ -114,13 +115,13 @@
             }
 
             .photo-header img {
-                width: 150px;
-                height: 150px;
+                width: 200px;
+                height: 200px;
                 border-radius: 50%;
                 object-fit: cover;
                 margin-top: -75px;
                 /*border: 6px solid ${colors[data.color].photoBorderColor};*/
-                box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
+                box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
             }
 
             .photo-header h1,
@@ -147,7 +148,7 @@
 
             .workExp-date {
                 font-style: italic;
-                font-size: .7em;
+                font-size: 1em;
                 /* was set to "left"*/
                 text-align: center;
                 margin-top: 10px;
@@ -165,6 +166,10 @@
                 justify-content: space-between;
                 margin-top: 20px;
                 margin-bottom: 20px;
+            }
+
+            #infoRow {
+                padding-top: 1em;
             }
 
             .card-background {
@@ -221,29 +226,28 @@
                                 <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="photo-header"
                                     alt="userPic">
                             </div>
-                            <br>
-                            <h1 class="photo-header">HI</h1>
-                            <h1 class="photo-header">Second h1</h1>
-                            <h2 class="photo-header">H2 Element</h2>
-                            <br>
-                            <p class="workExp-date">This is where work experience goes.</p>
-                            <ul style="margin-top: 0" class="nav links-nav justify-content-center">
-                                <li class="nav-link">
-                                    <a class="nav-link active" href="#">Link</a>
-                                </li>
-                                <li class="nav-link">
-                                    <a class="nav-link active" href="#">Link</a>
-                                </li>
-                                <li class="nav-link">
-                                    <a class="nav-link active" href="#">Link</a>
-                                </li>
-                            </ul>
+                            <div id="infoRow" class="row">
+                                <h3 class="photo-header">HI!</h3>
+                                <h2 class="photo-header">My name is Sean Cumming!</h1>
+                                <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
+                                <ul style="margin-top: 0" class="nav links-nav justify-content-center">
+                                    <li class="nav-link">
+                                        <a class="nav-link active" href="#">Link</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a class="nav-link active" href="#">Link</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a class="nav-link active" href="#">Link</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12" style="background: #065788; width:100%; height: 24em;">
                     <div id="h3wrap">
-                        <h4 style="background: gold; text-align: center; margin-top: 50px;">This is a description</h4>
+                        <h4 style="background: gold; text-align: center; margin-top: 50px;">This is a description.</h4>
                     </div>
                     <div id="cardWrap">
                         <div id="inDiv2a" class="card-background">
@@ -267,7 +271,7 @@
                         </div>
                         <div id="inDiv2b" class="card-background">
                             <div id="gitDisplay" class="card-body">
-                                Following 
+                                Following
                                 <span></span>
                             </div>
                         </div>
