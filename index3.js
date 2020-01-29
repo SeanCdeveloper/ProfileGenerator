@@ -31,11 +31,11 @@ return inquirer.prompt([
             //console.log(res.data)
        // const repoNames = res.data.map(repo => repo.name + "\n");
         const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
-        console.log(login, followers, following, bio, location, blog, public_repos, id);
+        // console.log(login, followers, following, bio, location, blog, public_repos, id);
     
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
-            console.log(response);
+            // console.log(response);
             const repoNames = response.data.map(function(repo) {
                 return repo.name;
             });
@@ -45,14 +45,16 @@ return inquirer.prompt([
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         axios.get(avatarURL).then(function(response) {
             //console.log(response.data);
-        });
+        })
 
         const starredURL = `https://api.github.com/users/${login}/starred`;
         axios.get(starredURL).then(function(response) {
-            console.log(response.data);
+            // console.log(response.data);
+            // console.log(response.data.length);
         }); 
     });    
 });
+    return {color: 'blue'}
    });
 }
 
@@ -66,7 +68,7 @@ return inquirer.prompt([
 });
 */
 
-   function generateHTML(answers) {
+   function generateHTML(data) {
     const colors = {
         green: {
           wrapperBackground: "#E6E1C3",
@@ -94,7 +96,6 @@ return inquirer.prompt([
         }
       };
       /* Was only data in parameter below */
-      function generateHTML(data) {
         return `<!DOCTYPE html>
         <html lang="en">
         
@@ -370,21 +371,21 @@ return inquirer.prompt([
         </body>
         
         </html>`
-              }
-   }
+    }
    
    async function init() {
-    console.log("hi")
+    // console.log("hi")
     try {
       const data = await promptUser();
+      console.log(data)
   
       const html = generateHTML(data);
-  
+      console.log(html);
       await writeFileAsync("index1.html", html);
   
-      console.log("Successfully wrote to index.html");
+    //   console.log("Successfully wrote to index.html");
     } catch(err) {
-      console.log(err);
+    console.log(err);
     }
   }
   
