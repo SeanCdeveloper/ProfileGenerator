@@ -61,20 +61,10 @@ return inquirer.prompt([
         }); 
     });    
 });
-    console.log('Final result before passed to generateData: ' + JSON.stringify(data))
+   // console.log('Final result before passed to generateData: ' + JSON.stringify(data))
     return data
    });
 }
-
-   /*
-   fs.writeFile("generate.txt", , (err, data) => {
-    if (err) {
-        console.log(err);
-    }
-    console.log(`You saved ${repoNames.length}`);
-
-});
-*/
 
    function generateHTML(data) {
     const colors = {
@@ -215,7 +205,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    border: 6px solid ${colors[data.color].photoBorderColor};
+                    border: 1px solid ${colors[data.color].photoBorderColor};
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
@@ -273,8 +263,6 @@ return inquirer.prompt([
                     background-color: ${colors[data.color].headerBackground};
                     color: ${colors[data.color].headerColor};
                     margin: 20px;
-                    /* change this later*/
-                    background: #d3d3d3;
                     width: 40%;
                     display: inline-block;
                 }
@@ -307,13 +295,39 @@ return inquirer.prompt([
                         zoom: .75;
                     }
                 }
+
+                #mainRow1 {
+                    background: #d3d3d3;
+                    width: 100%; 
+                    height: 24em;
+                }
+        
+                #mainRow2 {
+                    background: #065788; 
+                    width: 100%; 
+                    height: 24em;
+                }
+        
+                #mainRow3 {
+                    background: #d3d3d3;
+                    width: 100%; 
+                    height: 24em;
+                }
+
+                #iDescription {
+                    text-align: center; 
+                    margin-top: 50px;
+                }
+
+                ul {
+                    margin-top: 0;
+                }
             </style>
         
         <body>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 24em;">
-                        <!--Was id="userDiv"-->
+                    <div id="mainRow1" class="col-md-12">
                         <div id="userDiv" class="card wrapper">
                             <div class="card-body">
                                 <div id="imgWrap" class="photo-header">
@@ -325,7 +339,7 @@ return inquirer.prompt([
                                     <h3 class="photo-header">HI!</h3>
                                     <h2 class="photo-header">My name is Sean Cumming!</h1>
                                         <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
-                                        <ul style="margin-top: 0" class="nav links-nav justify-content-center">
+                                        <ul class="nav links-nav justify-content-center">
                                             <li class="nav-link">
                                                 <a class="nav-link active" href="#">Link</a>
                                             </li>
@@ -340,9 +354,9 @@ return inquirer.prompt([
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12" style="background: #065788; width:100%; height: 24em;">
+                    <div id="mainRow2" class="col-md-12">
                         <div id="h3wrap">
-                            <h4 style="background: gold; text-align: center; margin-top: 50px;">This is a description.</h4>
+                        <h4 id="iDescription">This is a description.</h4>
                         </div>
                         <div id="cardWrap">
                             <div id="inDiv2a" class="card-background">
@@ -372,7 +386,7 @@ return inquirer.prompt([
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12" style="background: #d3d3d3; width:100%; height: 24em;">
+                    <div id="mainRow3" class="col-md-12">
                     </div>
                 </div>
             </div>
