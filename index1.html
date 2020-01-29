@@ -1,110 +1,4 @@
-const fs = require("fs");
-const axios = require("axios");
-const inquirer = require("inquirer");
-const util = require("util");
-
-const writeFileAsync = util.promisify(fs.writeFile);
-
-function promptUser() {
-    let data = {}
-return inquirer.prompt([
-   {
-       type: "input",
-       message: "Enter your GitHub username",
-       default: "SeanCdeveloper",
-       name: "username"
-   }
-    ,
-   {
-       type: "list",
-       message: "What is your favorite color?",
-       name: "colors",
-       choices: [
-         //"green", "blue", "pink", "red"
-            {name: "green", value: "green"}, {name: "blue", value: "blue"},
-            {name: "pink", value: "pink"}, {name: "red", value: "red"}    
-       ]
-   }
-   ])
-   .then((response) => {
-       const username = response.username;
-       const color = response.colors;
-       data.username = username;
-       data.color = color;
-       const queryUrl = `https://api.github.com/users/${username}`;
-        axios.get(queryUrl).then(res => {
-            //console.log(res.data)
-       // const repoNames = res.data.map(repo => repo.name + "\n");
-        const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
-        //console.log(login, followers, following, bio, location, blog, public_repos, id);
-    
-        const repoURL = `https://api.github.com/users/${login}/repos`;
-        axios.get(repoURL).then(function(response) {
-            //console.log(response);
-            const repoNames = response.data.map(function(repo) {
-                return repo.name;
-            });
-            const repoNamesStr = repoNames.join("\n");
-           // console.log("REPOS: \n" + repoNamesStr);
-
-        const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
-        axios.get(avatarURL).then(function(response) {
-           // console.log(response.data);
-            data.avatar = response
-        });
-
-        const starredURL = `https://api.github.com/users/${login}/starred`;
-        axios.get(starredURL).then(function(response) {
-           // console.log(response.data);
-           // console.log(response.data.length);
-            data.starred = response
-        }); 
-    });    
-});
-    console.log('Final result before passed to generateData: ' + JSON.stringify(data))
-    return data
-   });
-}
-
-   /*
-   fs.writeFile("generate.txt", , (err, data) => {
-    if (err) {
-        console.log(err);
-    }
-    console.log(`You saved ${repoNames.length}`);
-
-});
-*/
-
-   function generateHTML(data) {
-    const colors = {
-        green: {
-          wrapperBackground: "#E6E1C3",
-          headerBackground: "#C1C72C",
-          headerColor: "black",
-          photoBorderColor: "#black"
-        },
-        blue: {
-          wrapperBackground: "#5F64D3",
-          headerBackground: "#26175A",
-          headerColor: "white",
-          photoBorderColor: "#73448C"
-        },
-        pink: {
-          wrapperBackground: "#879CDF",
-          headerBackground: "#FF8374",
-          headerColor: "white",
-          photoBorderColor: "#FEE24C"
-        },
-        red: {
-          wrapperBackground: "#DE9967",
-          headerBackground: "#870603",
-          headerColor: "white",
-          photoBorderColor: "white"
-        }
-      };
-      /* Was only data in parameter below */
-        return `<!DOCTYPE html>
+<!DOCTYPE html>
         <html lang="en">
         
         <head>
@@ -139,7 +33,7 @@ return inquirer.prompt([
         
                 /* This is the #userDiv, below, holding the main bio information  */
                 .wrapper {
-                    background-color: ${colors[data.color].wrapperBackground};
+                    background-color: #DE9967;
                     padding-top: 3.5em;
                     /* remove background below*/
                     /*background: gold;*/
@@ -202,8 +96,8 @@ return inquirer.prompt([
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
-                    background-color: ${colors[data.color].headerBackground};
-                    color: ${colors[data.color].headerColor};
+                    background-color: #870603;
+                    color: white;
                     padding: 10px;
                     width: 95%;
                     border-radius: 6px;
@@ -215,7 +109,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    border: 6px solid ${colors[data.color].photoBorderColor};
+                    border: 6px solid white;
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
@@ -270,8 +164,8 @@ return inquirer.prompt([
                 .card-background {
                     padding: 20px;
                     border-radius: 6px;
-                    background-color: ${colors[data.color].headerBackground};
-                    color: ${colors[data.color].headerColor};
+                    background-color: #870603;
+                    color: white;
                     margin: 20px;
                     /* change this later*/
                     background: #d3d3d3;
@@ -378,83 +272,4 @@ return inquirer.prompt([
             </div>
         </body>
         
-        </html>`
-    }
-   
-   async function init() {
-    // console.log("hi")
-    try {
-      const data = await promptUser();
-      console.log(data)
-  
-      const html = generateHTML(data);
-      console.log(html);
-      await writeFileAsync("index1.html", html);
-  
-    //   console.log("Successfully wrote to index.html");
-    } catch(err) {
-    console.log(err);
-    }
-  }
-  
-  init();   
-     
-
-
-
-   
-// avatar url
-  // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
-
-
-// My avatar_url:  "avatar_url": "https://avatars1.githubusercontent.com/u/55586107?v=4
-
-/* 
-
-Completed Stuff
-
-* Number of repositories    
-
-* followers
-
-* login
-
-* bio
-
-* location 
-
-* 
-
-
-
-/* 
-
-PDF Resume from Github Profile 
-
-# bio Image from GitHub Profile
-
-# User's location 
-
-# Link to GitHub Profiile
-
-# Resume Includes: # of public repositories, followers, GitHub stars, 
-
-# Background-Color of PDF matches provided color.  
-
-*/ 
-
-   /* Taken From Develop part of homework Repo 
-
-const questions = [
-  
-];
-
-function writeToFile(fileName, data) {
- 
-}
-
-function init() {
-
-init();
-
-*/
+        </html>

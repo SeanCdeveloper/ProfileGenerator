@@ -36,7 +36,7 @@ return inquirer.prompt([
             //console.log(res.data)
        // const repoNames = res.data.map(repo => repo.name + "\n");
         const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
-        console.log(login, followers, following, bio, location, blog, public_repos, id);
+        //console.log(login, followers, following, bio, location, blog, public_repos, id);
     
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
@@ -45,19 +45,18 @@ return inquirer.prompt([
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
-            
-            console.log("REPOS: \n" + repoNamesStr);
+           // console.log("REPOS: \n" + repoNamesStr);
 
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         axios.get(avatarURL).then(function(response) {
-            console.log(response.data);
+           // console.log(response.data);
             data.avatar = response
         });
 
         const starredURL = `https://api.github.com/users/${login}/starred`;
         axios.get(starredURL).then(function(response) {
-            console.log(response.data);
-            console.log(response.data.length);
+           // console.log(response.data);
+           // console.log(response.data.length);
             data.starred = response
         }); 
     });    

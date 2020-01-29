@@ -68,7 +68,7 @@ inquirer
                     });
                 });
             });
-        });
+        })
 
         // const repoURL = `https://api.github.com/users/${login}/repos`;
         // axios.get(repoURL).then(function(response) {
