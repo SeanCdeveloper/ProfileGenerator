@@ -360,19 +360,19 @@ return inquirer.prompt([
                                 </div>
                                 <div id="infoRow" class="row">
                                     <h3 class="photo-header">HI!</h3>
-                                    <h2 class="photo-header">My name is Sean Cumming!</h1>
-                                        <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
-                                        <ul class="nav links-nav justify-content-center">
-                                            <li class="nav-link">
-                                                <a class="nav-link active" href="#">Link</a>
-                                            </li>
-                                            <li class="nav-link">
-                                                <a class="nav-link active" href="#">Link</a>
-                                            </li>
-                                            <li class="nav-link">
-                                                <a class="nav-link active" href="#">Link</a>
-                                            </li>
-                                        </ul>
+                                    <h2 class="photo-header">My name is Sean Cumming!</h2>
+                                    <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
+                                    <ul class="nav links-nav justify-content-center">
+                                        <li class="nav-link">
+                                        <a class="nav-link active" href="#"><i class="fas fa-location-arrow"></i></span></a>
+                                        </li>
+                                        <li class="nav-link">
+                                        <a class="nav-link active" href="#"><i class="fab fa-github-alt"></i>&nbsp;Github</a>
+                                        </li>
+                                        <li class="nav-link">
+                                        <a class="nav-link active" href="#"><i class="fas fa-blog"></i>&nbsp;Blog</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

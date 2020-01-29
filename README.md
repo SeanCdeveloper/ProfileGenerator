@@ -131,7 +131,7 @@ In order to use this Application, the user must have node.js installed on their 
 
 # Usage 
 
-To use the Profile Generator, the user first answers two prompts: (1) What is your Github username? and (2) What is your favorite color?.  After answering these questions, the user’s information appears, including profile image, user-name, number of public repositories, number of followers, number of GitHub stars, and number of users following them.  In addition links to the user’s location (via Google Maps), GitHub profile, blog, and the user’s bio appears on the dynamically created PDF.  In addition, the color the user picks in the “What is your favorite color?” prompt will set the color for the layout of the PDF.  
+To use the Profile Generator, the user first answers two prompts: (1) What is your Github username? and (2) What is your favorite color?.  After answering these questions, the user’s information appears, including profile image, user-name, number of public repositories, number of followers, number of GitHub stars, and number of users following them.  In addition, links to the user’s location (via Google Maps), GitHub profile, blog, and the user’s bio appears on the dynamically created PDF.  In addition, the color the user picks in the “What is your favorite color?” prompt will set the color for the layout of the PDF.  
 
 # License 
 

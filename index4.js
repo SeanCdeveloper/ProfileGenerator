@@ -39,13 +39,20 @@ return inquirer.prompt([
         //console.log(response.data)
        // const repoNames = res.data.map(repo => repo.name + "\n");
         const { login, followers, following, bio, location, blog, public_repos, id } = response.data;
-       // console.log(login, followers, following, bio, location, blog, public_repos, id);
-       
+        console.log(login, followers, following, bio, location, blog, public_repos, id);
+    
+        console.log(public_repos); // 16
         console.log(followers); // 11
-        console.log(response.data.public_repos); // 16
-        console.log(response.data.followers); // 11
-        console.log(response.data.following); // 16        
-        
+        console.log(following); // 16        
+        /* Added, below */
+/*
+        const followDat = response.map(function(response) {
+            return followers;
+        });
+        const numFollowStr = followDat;
+        console.log(numFollowStr);
+        //data.numFollow = numFollowStr;
+*/
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
             // console.log(response);
@@ -53,11 +60,12 @@ return inquirer.prompt([
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
-            // console.log("REPOS: \n" + repoNamesStr);
+             //console.log("REPOS: \n" + repoNamesStr);
+
         }).then(function(response) {
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         return axios.get(avatarURL).then(function(response) {
-           // console.log(response.data);
+          //  console.log(response.data);
             data.avatar = response;
             return response;
         });
@@ -65,14 +73,15 @@ return inquirer.prompt([
         const starredURL = `https://api.github.com/users/${login}/starred`;
         return axios.get(starredURL).then(function(response) {
            // console.log(response.data);
-           // console.log(response.data.length);
-            data.starred = response.data.length;
+            console.log(response.data.length);
+            //data.starred = response.data.length;
+           // response.data.length = response;
             return response;
         }); 
     });    
     console.log('Final result before passed to generateHTML: ' + JSON.stringify(data))
 });
-     return data;
+    return data;
    });
 }
 
@@ -351,19 +360,19 @@ return inquirer.prompt([
                                 </div>
                                 <div id="infoRow" class="row">
                                     <h3 class="photo-header">HI!</h3>
-                                    <h2 class="photo-header">My name is Sean Cumming!</h1>
-                                        <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
-                                        <ul class="nav links-nav justify-content-center">
-                                            <li class="nav-link">
-                                                <a class="nav-link active" href="#">Link</a>
-                                            </li>
-                                            <li class="nav-link">
-                                                <a class="nav-link active" href="#">Link</a>
-                                            </li>
-                                            <li class="nav-link">
-                                                <a class="nav-link active" href="#">Link</a>
-                                            </li>
-                                        </ul>
+                                    <h2 class="photo-header">My name is Sean Cumming!</h2>
+                                    <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
+                                    <ul class="nav links-nav justify-content-center">
+                                        <li class="nav-link">
+                                        <a class="nav-link active" href="#"><i class="fas fa-location-arrow"></i></span></a>
+                                        </li>
+                                        <li class="nav-link">
+                                        <a class="nav-link active" href="#"><i class="fab fa-github-alt"></i>&nbsp;Github</a>
+                                        </li>
+                                        <li class="nav-link">
+                                        <a class="nav-link active" href="#"><i class="fas fa-blog"></i>&nbsp;Blog</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
