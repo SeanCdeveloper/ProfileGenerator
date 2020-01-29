@@ -112,11 +112,11 @@ GitHub Profile Generator
 
 ## Table of Contents
 
-[User-Story] (#User Story)
-[Description] (#Description)
-[Installation] (#installation)
-[Usage] (#usage)
-[License] (#license)
+* [User-Story] (#User Story)
+* [Description] (#Description)
+* [Installation] (#installation)
+* [Usage] (#usage)
+* [License] (#license)
 
 # User-Story 
 
