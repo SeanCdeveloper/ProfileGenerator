@@ -35,54 +35,56 @@ inquirer
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
-            console.log("REPOS: \n" + repoNamesStr);
+            // console.log("REPOS: \n" + repoNamesStr);
         }).then(function(response) {
             const repoURL = `https://api.github.com/users/${login}/repos`;
-            axios.get(repoURL).then(function(response) {
+            return axios.get(repoURL).then(function(response) {
                 const repoNames = response.data.map(function(repo) {
                     return repo.name;
                 });
                 const repoNamesStr = repoNames.join("\n");
-                console.log("REPOS: \n" + repoNamesStr);
+                // console.log("REPOS: \n" + repoNamesStr);
                 data.repoNames = repoNamesStr
-            });
-        }).then(function(response) {
-            const repoURL = `https://api.github.com/users/${login}/repos`;
-            axios.get(repoURL).then(function(response) {
-                const repoNames = response.data.map(function(repo) {
-                    return repo.name;
+            }).then(function(response) {
+                const repoURL = `https://api.github.com/users/${login}/repos`;
+                return axios.get(repoURL).then(function(response) {
+                    const repoNames = response.data.map(function(repo) {
+                        return repo.name;
+                    });
+                    const repoNamesStr = repoNames.join("\n");
+                    //console.log("REPOS: \n" + repoNamesStr);
+                    data.repoNames2 = repoNamesStr
+                }).then(function(response) {
+                    const repoURL = `https://api.github.com/users/${login}/repos`;
+                    return axios.get(repoURL).then(function(response) {
+                        const repoNames = response.data.map(function(repo) {
+                            return repo.name;
+                        });
+                        const repoNamesStr = repoNames.join("\n");
+                        //console.log("REPOS: \n" + repoNamesStr);
+                        data.repoNames3 = repoNamesStr
+                        console.log(data)
+                        return data
+                    });
                 });
-                const repoNamesStr = repoNames.join("\n");
-                console.log("REPOS: \n" + repoNamesStr);
-                data.repoNames2 = repoNamesStr
             });
-        }).then(function(response) {
-            const repoURL = `https://api.github.com/users/${login}/repos`;
-            axios.get(repoURL).then(function(response) {
-                const repoNames = response.data.map(function(repo) {
-                    return repo.name;
-                });
-                const repoNamesStr = repoNames.join("\n");
-                console.log("REPOS: \n" + repoNamesStr);
-                data.repoNames3 = repoNamesStr
-            });
-        })
-
-        const repoURL = `https://api.github.com/users/${login}/repos`;
-        axios.get(repoURL).then(function(response) {
-            const repoNames = response.data.map(function(repo) {
-                return repo.name;
-            });
-            const repoNamesStr = repoNames.join("\n");
-            console.log("REPOS: \n" + repoNamesStr);
         });
+
+        // const repoURL = `https://api.github.com/users/${login}/repos`;
+        // axios.get(repoURL).then(function(response) {
+        //     const repoNames = response.data.map(function(repo) {
+        //         return repo.name;
+        //     });
+        //     const repoNamesStr = repoNames.join("\n");
+        //     console.log("REPOS: \n" + repoNamesStr);
+        // });
         
-        fs.writeFile("generateHTML.js", repoNames, (err, data) => {
-                if (err) {
-                    console.log(err);
-                }
-                console.log(`You saved ${repoNames.length}`);
-            }); 
+        // fs.writeFile("generateHTML.js", repoNames, (err, data) => {
+        //         if (err) {
+        //             console.log(err);
+        //         }
+        //         console.log(`You saved ${repoNames.length}`);
+        //     }); 
         });
    });
 
