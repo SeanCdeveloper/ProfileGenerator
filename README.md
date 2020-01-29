@@ -1,3 +1,7 @@
+Put then statements around axios calls; then make sure last axios call returns full data-object; then return everything within nested axios 
+
+Return data in last axios call, return the last axios call, and return first axios call. 
+
 # ProfileGenerator
 
 # Unit 09 Node.js and ES6+ Homework: Developer Profile Generator

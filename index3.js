@@ -47,21 +47,22 @@ return inquirer.prompt([
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
-           // console.log("REPOS: \n" + repoNamesStr);
+            // console.log("REPOS: \n" + repoNamesStr);
+
         }).then(function(response) {
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         return axios.get(avatarURL).then(function(response) {
            // console.log(response.data);
             data.avatar = response
-            //return response;
+            return response;
         });
     }).then(function(response) {
         const starredURL = `https://api.github.com/users/${login}/starred`;
         return axios.get(starredURL).then(function(response) {
            // console.log(response.data);
            // console.log(response.data.length);
-            data.starred = response
-            // return response;
+            data.starred = response.data.length;
+            return response;
         }); 
     });    
 });
@@ -370,26 +371,26 @@ return inquirer.prompt([
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Public Repositories
-                                    <span id="span1"></span>
+                                    <span id="span1"><br>Span1</span>
                                 </div>
                             </div>
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Followers
-                                    <span id="span2"></span>
+                                    <span id="span2"><br>Span2</span>
                                 </div>
                             </div>
                             <br>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     GitHub Stars
-                                    <span id="span3"></span>
+                                    <span id="span3"><br>Span3</span>
                                 </div>
                             </div>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Following
-                                    <span id="span4"></span>
+                                    <span id="span4"><br>Span4</span>
                                 </div>
                             </div>
                         </div>
