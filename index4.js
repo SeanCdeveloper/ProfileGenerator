@@ -31,40 +31,48 @@ return inquirer.prompt([
        const color = response.colors; // displays "green" || selected color
        data.username = username; // displays "SeanCdeveloper"
        data.color = color; // displays "green"
-       const queryUrl = `https://api.github.com/users/${username}`;
-        axios.get(queryUrl).then(res => {
-            //console.log(res.data)
-       // const repoNames = res.data.map(repo => repo.name + "\n");
-        const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
-        console.log(login, followers, following, bio, location, blog, public_repos, id);
+       /* Added 1 log, below (this was below the console.log for Deconstructed Object. */
+       // console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
 
-        /* Added 1 log, below */
-        console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
+       const queryUrl = `https://api.github.com/users/${username}`;
+        axios.get(queryUrl).then(response => {
+        //console.log(response.data)
+       // const repoNames = res.data.map(repo => repo.name + "\n");
+        const { login, followers, following, bio, location, blog, public_repos, id } = response.data;
+       // console.log(login, followers, following, bio, location, blog, public_repos, id);
+       
+        console.log(followers); // 11
+        console.log(response.data.public_repos); // 16
+        console.log(response.data.followers); // 11
+        console.log(response.data.following); // 16        
+        
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
-            //console.log(response);
+            // console.log(response);
             const repoNames = response.data.map(function(repo) {
                 return repo.name;
             });
             const repoNamesStr = repoNames.join("\n");
-           // console.log("REPOS: \n" + repoNamesStr);
-
+            // console.log("REPOS: \n" + repoNamesStr);
+        }).then(function(response) {
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
-        axios.get(avatarURL).then(function(response) {
+        return axios.get(avatarURL).then(function(response) {
            // console.log(response.data);
-            data.avatar = response
+            data.avatar = response;
+            return response;
         });
-
+    }).then(function(response) {
         const starredURL = `https://api.github.com/users/${login}/starred`;
-        axios.get(starredURL).then(function(response) {
+        return axios.get(starredURL).then(function(response) {
            // console.log(response.data);
            // console.log(response.data.length);
-            data.starred = response
+            data.starred = response.data.length;
+            return response;
         }); 
     });    
+    console.log('Final result before passed to generateHTML: ' + JSON.stringify(data))
 });
-   // console.log('Final result before passed to generateData: ' + JSON.stringify(data))
-    return data
+     return data;
    });
 }
 
@@ -368,26 +376,26 @@ return inquirer.prompt([
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Public Repositories
-                                    <span id="span1"></span>
+                                    <span id="span1"><br>Span 1</span>
                                 </div>
                             </div>
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Followers
-                                    <span id="span2"></span>
+                                    <span id="span2"><br>Span2</span>
                                 </div>
                             </div>
                             <br>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     GitHub Stars
-                                    <span id="span3"></span>
+                                    <span id="span3"><br>Span3</span>
                                 </div>
                             </div>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Following
-                                    <span id="span4"></span>
+                                    <span id="span4"><br>Span4</span>
                                 </div>
                             </div>
                         </div>
