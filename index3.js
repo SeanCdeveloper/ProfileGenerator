@@ -36,8 +36,12 @@ return inquirer.prompt([
             //console.log(res.data)
        // const repoNames = res.data.map(repo => repo.name + "\n");
         const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
-        //console.log(login, followers, following, bio, location, blog, public_repos, id);
-    
+        console.log(login, followers, following, bio, location, blog, public_repos, id);
+/* Added, 4 logs, below */
+        console.log(username); // displays "SeanCdeveloper"
+        console.log(color);  // displays "green"
+        console.log(data.username); // displays "SeanCdeveloper"
+        console.log(data.color); // displays "green"
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
             //console.log(response);
@@ -72,7 +76,7 @@ return inquirer.prompt([
           wrapperBackground: "#E6E1C3",
           headerBackground: "#C1C72C",
           headerColor: "black",
-          photoBorderColor: "#black"
+          photoBorderColor: "black"
         },
         blue: {
           wrapperBackground: "#5F64D3",
@@ -205,7 +209,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    border: 1px solid ${colors[data.color].photoBorderColor};
+                    border: 6px solid ${colors[data.color].photoBorderColor};
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
@@ -322,6 +326,10 @@ return inquirer.prompt([
                 ul {
                     margin-top: 0;
                 }
+
+                #span1 {
+
+                }
             </style>
         
         <body>
@@ -362,26 +370,26 @@ return inquirer.prompt([
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Public Repositories
-                                    <span></span>
+                                    <span id="span1"></span>
                                 </div>
                             </div>
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Followers
-                                    <span></span>
+                                    <span id="span2"></span>
                                 </div>
                             </div>
                             <br>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     GitHub Stars
-                                    <span></span>
+                                    <span id="span3"></span>
                                 </div>
                             </div>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Following
-                                    <span></span>
+                                    <span id="span4"></span>
                                 </div>
                             </div>
                         </div>
@@ -399,10 +407,10 @@ return inquirer.prompt([
     // console.log("hi")
     try {
       const data = await promptUser();
-      console.log(data)
+      //console.log(data)
   
       const html = generateHTML(data);
-      console.log(html);
+     // console.log(html);
       await writeFileAsync("index1.html", html);
   
     //   console.log("Successfully wrote to index.html");
