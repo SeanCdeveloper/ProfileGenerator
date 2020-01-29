@@ -28,6 +28,46 @@ inquirer
         const { login, followers, following, bio, location, blog, public_repos} = res.data;
         console.log(login, followers, following, bio, location, blog, public_repos);
     
+        let data = {}
+        const repoURL = `https://api.github.com/users/${login}/repos`;
+        axios.get(repoURL).then(function(response) {
+            const repoNames = response.data.map(function(repo) {
+                return repo.name;
+            });
+            const repoNamesStr = repoNames.join("\n");
+            console.log("REPOS: \n" + repoNamesStr);
+        }).then(function(response) {
+            const repoURL = `https://api.github.com/users/${login}/repos`;
+            axios.get(repoURL).then(function(response) {
+                const repoNames = response.data.map(function(repo) {
+                    return repo.name;
+                });
+                const repoNamesStr = repoNames.join("\n");
+                console.log("REPOS: \n" + repoNamesStr);
+                data.repoNames = repoNamesStr
+            });
+        }).then(function(response) {
+            const repoURL = `https://api.github.com/users/${login}/repos`;
+            axios.get(repoURL).then(function(response) {
+                const repoNames = response.data.map(function(repo) {
+                    return repo.name;
+                });
+                const repoNamesStr = repoNames.join("\n");
+                console.log("REPOS: \n" + repoNamesStr);
+                data.repoNames2 = repoNamesStr
+            });
+        }).then(function(response) {
+            const repoURL = `https://api.github.com/users/${login}/repos`;
+            axios.get(repoURL).then(function(response) {
+                const repoNames = response.data.map(function(repo) {
+                    return repo.name;
+                });
+                const repoNamesStr = repoNames.join("\n");
+                console.log("REPOS: \n" + repoNamesStr);
+                data.repoNames3 = repoNamesStr
+            });
+        })
+
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
             const repoNames = response.data.map(function(repo) {
