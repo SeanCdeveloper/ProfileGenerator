@@ -31,15 +31,15 @@ return inquirer.prompt([
        const color = response.colors; // displays "green" || selected color
        data.username = username; // displays "SeanCdeveloper"
        data.color = color; // displays "green"
-       /* Added 1 log, below (this was below the console.log for Deconstructed Object. */
-       // console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
        const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then(res => {
             //console.log(res.data)
        // const repoNames = res.data.map(repo => repo.name + "\n");
         const { login, followers, following, bio, location, blog, public_repos, id } = res.data;
         console.log(login, followers, following, bio, location, blog, public_repos, id);
-       
+
+        /* Added 1 log, below */
+        console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
             //console.log(response);
@@ -48,20 +48,18 @@ return inquirer.prompt([
             });
             const repoNamesStr = repoNames.join("\n");
            // console.log("REPOS: \n" + repoNamesStr);
-        }).then(function(response) {
+
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
-        return axios.get(avatarURL).then(function(response) {
+        axios.get(avatarURL).then(function(response) {
            // console.log(response.data);
             data.avatar = response
-            //return response;
         });
-    }).then(function(response) {
+
         const starredURL = `https://api.github.com/users/${login}/starred`;
-        return axios.get(starredURL).then(function(response) {
+        axios.get(starredURL).then(function(response) {
            // console.log(response.data);
            // console.log(response.data.length);
             data.starred = response
-            // return response;
         }); 
     });    
 });
