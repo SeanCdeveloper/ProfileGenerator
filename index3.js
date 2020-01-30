@@ -88,28 +88,36 @@ return inquirer.prompt([
    function generateHTML(data) {
     const colors = {
         green: {
-          wrapperBackground: "#E6E1C3",
-          headerBackground: "#C1C72C",
-          headerColor: "black",
-          photoBorderColor: "black"
+          wrapperBackground: "#E6E1C3", // off-white
+          headerBackground: "#C1C72C", // light-green
+          headerColor: "black", 
+          photoBorderColor: "black", 
+          middleRowColor: "#065788",
+          workExpColor: "white" // navy-blue
         },
         blue: {
-          wrapperBackground: "#5F64D3",
-          headerBackground: "#26175A",
-          headerColor: "white",
-          photoBorderColor: "#73448C"
+          wrapperBackground: "antiquewhite", // light-blue;
+          headerBackground: "#022a38", // darker-blue;
+          headerColor: "white", 
+          photoBorderColor: "#003459", // weird purple
+          middleRowColor: "#063f52",
+          workExpColor: "white"
         },
         pink: {
           wrapperBackground: "#879CDF",
           headerBackground: "#FF8374",
           headerColor: "white",
-          photoBorderColor: "#FEE24C"
+          photoBorderColor: "#FEE24C",
+          middleRowColor: "#000000",
+          workExpColor: "white"
         },
         red: {
           wrapperBackground: "#DE9967",
           headerBackground: "#870603",
           headerColor: "white",
-          photoBorderColor: "white"
+          photoBorderColor: "white",
+          middleRowColor: "#000000",
+          workExpColor: "white"
         }
       };
       /* Was only data in parameter below */
@@ -150,8 +158,6 @@ return inquirer.prompt([
                 .wrapper {
                     background-color: ${colors[data.color].wrapperBackground};
                     padding-top: 3.5em;
-                    /* remove background below*/
-                    /*background: gold;*/
                     margin-left: 5%;
                     margin-right: 5%;
                     transform: translateY(2em);
@@ -224,7 +230,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    border: 6px solid ${colors[data.color].photoBorderColor};
+                    border: 3px solid ${colors[data.color].photoBorderColor};
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
@@ -322,9 +328,10 @@ return inquirer.prompt([
                 }
         
                 #mainRow2 {
-                    background: #065788; 
+                    /*background: #065788; */
                     width: 100%; 
                     height: 24em;
+                    background-color: ${colors[data.color].middleRowColor};
                 }
         
                 #mainRow3 {
@@ -332,6 +339,7 @@ return inquirer.prompt([
                     width: 100%; 
                     height: 24em;
                 }
+
 
                 #iDescription {
                     text-align: center; 
@@ -342,8 +350,8 @@ return inquirer.prompt([
                     margin-top: 0;
                 }
 
-                #span1 {
-
+                #iDescription {
+                   color: ${colors[data.color].workExpColor};
                 }
             </style>
         
@@ -361,7 +369,7 @@ return inquirer.prompt([
                                 <div id="infoRow" class="row">
                                     <h3 class="photo-header">HI!</h3>
                                     <h2 class="photo-header">My name is Sean Cumming!</h2>
-                                    <h1 class="photo-header workExp-date">This is where work experience goes.</h1>
+                                    <h1 id="workExp" class="photo-header workExp-date">This is where work experience goes.</h1>
                                     <ul class="nav links-nav justify-content-center">
                                         <li class="nav-link">
                                         <a class="nav-link active" href="#"><i class="fas fa-location-arrow"></i></span></a>
