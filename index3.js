@@ -45,12 +45,11 @@ return inquirer.prompt([
         console.log(followers); // 12
         console.log(following); // 16        
 
-        data.public_repos = public_repos;
-        data.followers = followers;
-        data.following = following;
+        data.public_repos = JSON.stringify(public_repos);
+        data.followers = JSON.stringify(followers);
+        data.following = JSON.stringify(following);
 
-        console.log(data);
-
+        //console.log(data);
 
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
@@ -60,31 +59,35 @@ return inquirer.prompt([
             });
             const repoNamesStr = repoNames.join("\n");
              //console.log("REPOS: \n" + repoNamesStr);
+
         }).then(function(response) {
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         return axios.get(avatarURL).then(function(response) {
-          //  console.log(response.data);
-            data.avatar = response;
+            //console.log(response.data);
+            const avatar = response.data;
+            data.avatar = avatar;
             return response;
-            console.log(data);
+            //return data.avatar;
         });
     }).then(function(response) {
         const starredURL = `https://api.github.com/users/${login}/starred`;
         return axios.get(starredURL).then(function(response) {
-           // console.log(response.data);
             console.log(response.data.length);
-            //data.starred = response.data.length;
-           // response.data.length = response;
-            return response;
+            const starred = response.data.length;
+            data.stars = starred;
+            console.log(data);  // displays whole objct of data, including "username, color, public_repos", "followers", following, and "avatar" Keys.
+            //return response;
+            //return data.stars;
         }); 
     });    
     console.log('Final result before passed to generateHTML: ' + JSON.stringify(data))
 });
-    return data;    
+   return data;    
    });
 }
 
    function generateHTML(data) {
+    
     const colors = {
         green: {
           wrapperBackground: "antiquewhite", 
@@ -395,26 +398,26 @@ return inquirer.prompt([
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Public Repositories
-                                    <span id="span1"><br>Span 1</span>
+                                    <span id="span1"><br>${data.public_repos}</span>
                                 </div>
                             </div>
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Followers
-                                    <span id="span2"><br>Span2</span>
+                                    <span id="span2"><br>${data.followers}</span>
                                 </div>
                             </div>
                             <br>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     GitHub Stars
-                                    <span id="span3"><br>Span3</span>
+                                    <span id="span3"><br>${data.stars}</span>
                                 </div>
                             </div>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Following
-                                    <span id="span4"><br>Span4</span>
+                                    <span id="span4"><br>${data.following}</span>
                                 </div>
                             </div>
                         </div>
@@ -512,4 +515,7 @@ init();
         const numFollowStr = followDat;
         console.log(numFollowStr);
         //data.numFollow = numFollowStr;
+
+        removed code from starred:    //data.starred = response.data.length;
+           // response.data.length = response;
 */
