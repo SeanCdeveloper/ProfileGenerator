@@ -88,35 +88,35 @@ return inquirer.prompt([
    function generateHTML(data) {
     const colors = {
         green: {
-          wrapperBackground: "#E6E1C3", // off-white
-          headerBackground: "#C1C72C", // light-green
+          wrapperBackground: "antiquewhite", 
+          headerBackground: "green", 
           headerColor: "black", 
-          photoBorderColor: "black", 
-          middleRowColor: "#065788",
-          workExpColor: "white" // navy-blue
+          photoBorderColor: "green", 
+          middleRowColor: "darkgreen",
+          workExpColor: "black" 
         },
         blue: {
-          wrapperBackground: "antiquewhite", // light-blue;
-          headerBackground: "#022a38", // darker-blue;
+          wrapperBackground: "antiquewhite", 
+          headerBackground: "#022a38", 
           headerColor: "white", 
-          photoBorderColor: "#003459", // weird purple
+          photoBorderColor: "#003459", 
           middleRowColor: "#063f52",
           workExpColor: "white"
         },
         pink: {
-          wrapperBackground: "#879CDF",
-          headerBackground: "#FF8374",
+          wrapperBackground: "antiquewhite", // blueish color "#879CDF"
+          headerBackground: "#FF8374", // pink
           headerColor: "white",
-          photoBorderColor: "#FEE24C",
-          middleRowColor: "#000000",
+          photoBorderColor: "#FF8374",
+          middleRowColor: "#879cdf",
           workExpColor: "white"
         },
         red: {
-          wrapperBackground: "#DE9967",
+          wrapperBackground: "antiquewhite", // orangey color #DE9967
           headerBackground: "#870603",
           headerColor: "white",
-          photoBorderColor: "white",
-          middleRowColor: "#000000",
+          photoBorderColor: "#870603",
+          middleRowColor: "#a40000",
           workExpColor: "white"
         }
       };
@@ -247,7 +247,7 @@ return inquirer.prompt([
                 .links-nav {
                     width: 100%;
                     text-align: center;
-                    padding: 20px 0;
+                    padding: 30px 0;
                     font-size: 1.1em;
                 }
         
@@ -274,7 +274,6 @@ return inquirer.prompt([
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
-                    margin-top: 20px;
                     margin-bottom: 20px;
                 }
         
