@@ -97,9 +97,9 @@ return inquirer.prompt([
         },
         blue: {
           wrapperBackground: "antiquewhite", 
-          headerBackground: "#022a38", 
+          headerBackground: "#086788", 
           headerColor: "white", 
-          photoBorderColor: "#003459", 
+          photoBorderColor: "#086788", 
           middleRowColor: "#063f52",
           workExpColor: "white"
         },
@@ -219,7 +219,7 @@ return inquirer.prompt([
                     flex-wrap: wrap;
                     background-color: ${colors[data.color].headerBackground};
                     color: ${colors[data.color].headerColor};
-                    padding: 10px;
+                    padding: 12px;
                     width: 95%;
                     border-radius: 6px;
                 }
@@ -234,6 +234,10 @@ return inquirer.prompt([
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
+                img {
+                    transform: translateY(-25px);
+                }
+
                 .photo-header h1,
                 .photo-header h2 {
                     width: 100%;
