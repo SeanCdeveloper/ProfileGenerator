@@ -32,7 +32,7 @@ return inquirer.prompt([
        data.username = username; // displays "SeanCdeveloper"
        data.color = color; // displays "green"
        /* Added 1 log, below (this was below the console.log for Deconstructed Object. */
-       // console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
+       console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
 
        const queryUrl = `https://api.github.com/users/${username}`;
         axios.get(queryUrl).then(response => {
@@ -42,17 +42,16 @@ return inquirer.prompt([
         console.log(login, followers, following, bio, location, blog, public_repos, id);
     
         console.log(public_repos); // 16
-        console.log(followers); // 11
+        console.log(followers); // 12
         console.log(following); // 16        
-        /* Added, below */
-/*
-        const followDat = response.map(function(response) {
-            return followers;
-        });
-        const numFollowStr = followDat;
-        console.log(numFollowStr);
-        //data.numFollow = numFollowStr;
-*/
+
+        data.public_repos = public_repos;
+        data.followers = followers;
+        data.following = following;
+
+        console.log(data);
+
+
         const repoURL = `https://api.github.com/users/${login}/repos`;
         axios.get(repoURL).then(function(response) {
             // console.log(response);
@@ -61,13 +60,13 @@ return inquirer.prompt([
             });
             const repoNamesStr = repoNames.join("\n");
              //console.log("REPOS: \n" + repoNamesStr);
-
         }).then(function(response) {
         const avatarURL = `https://avatars1.githubusercontent.com/u/${id}?v=4`;
         return axios.get(avatarURL).then(function(response) {
           //  console.log(response.data);
             data.avatar = response;
             return response;
+            console.log(data);
         });
     }).then(function(response) {
         const starredURL = `https://api.github.com/users/${login}/starred`;
@@ -81,42 +80,42 @@ return inquirer.prompt([
     });    
     console.log('Final result before passed to generateHTML: ' + JSON.stringify(data))
 });
-    return data;
+    return data;    
    });
 }
 
    function generateHTML(data) {
     const colors = {
         green: {
-          wrapperBackground: "#E6E1C3", // off-white
-          headerBackground: "#C1C72C", // light-green
+          wrapperBackground: "antiquewhite", 
+          headerBackground: "green", 
           headerColor: "black", 
-          photoBorderColor: "black", 
-          middleRowColor: "#065788",
-          workExpColor: "white" // navy-blue
+          photoBorderColor: "green", 
+          middleRowColor: "darkgreen",
+          workExpColor: "black" 
         },
         blue: {
-          wrapperBackground: "antiquewhite", // light-blue;
-          headerBackground: "#022a38", // darker-blue;
+          wrapperBackground: "antiquewhite", 
+          headerBackground: "#086788", 
           headerColor: "white", 
-          photoBorderColor: "#003459", // weird purple
+          photoBorderColor: "#086788", 
           middleRowColor: "#063f52",
           workExpColor: "white"
         },
         pink: {
-          wrapperBackground: "#879CDF",
-          headerBackground: "#FF8374",
+          wrapperBackground: "antiquewhite", // blueish color "#879CDF"
+          headerBackground: "#FF8374", // pink
           headerColor: "white",
-          photoBorderColor: "#FEE24C",
-          middleRowColor: "#000000",
+          photoBorderColor: "#FF8374",
+          middleRowColor: "#879cdf",
           workExpColor: "white"
         },
         red: {
-          wrapperBackground: "#DE9967",
+          wrapperBackground: "antiquewhite", // orangey color #DE9967
           headerBackground: "#870603",
           headerColor: "white",
-          photoBorderColor: "white",
-          middleRowColor: "#000000",
+          photoBorderColor: "#870603",
+          middleRowColor: "#a40000",
           workExpColor: "white"
         }
       };
@@ -219,7 +218,7 @@ return inquirer.prompt([
                     flex-wrap: wrap;
                     background-color: ${colors[data.color].headerBackground};
                     color: ${colors[data.color].headerColor};
-                    padding: 10px;
+                    padding: 12px;
                     width: 95%;
                     border-radius: 6px;
                 }
@@ -234,6 +233,10 @@ return inquirer.prompt([
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
+                img {
+                    transform: translateY(-25px);
+                }
+
                 .photo-header h1,
                 .photo-header h2 {
                     width: 100%;
@@ -247,7 +250,7 @@ return inquirer.prompt([
                 .links-nav {
                     width: 100%;
                     text-align: center;
-                    padding: 20px 0;
+                    padding: 30px 0;
                     font-size: 1.1em;
                 }
         
@@ -274,7 +277,6 @@ return inquirer.prompt([
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
-                    margin-top: 20px;
                     margin-bottom: 20px;
                 }
         
@@ -502,4 +504,12 @@ function init() {
 
 init();
 
+
+/*
+        const followDat = response.map(function(response) {
+            return followers;
+        });
+        const numFollowStr = followDat;
+        console.log(numFollowStr);
+        //data.numFollow = numFollowStr;
 */
