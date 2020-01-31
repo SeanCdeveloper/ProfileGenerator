@@ -21,28 +21,24 @@ return inquirer.prompt([
        message: "What is your favorite color?",
        name: "colors",
        choices: [
-         //"green", "blue", "pink", "red"
             {name: "green", value: "green"}, {name: "blue", value: "blue"},
             {name: "pink", value: "pink"}, {name: "red", value: "red"}    
        ]
    }
    ])
    .then((response) => {
-        const username = response.username; // displays "SeanCdeveloper"
-        const color = response.colors; // displays "green" || selected color
-        data.username = username; // displays "SeanCdeveloper"
-        data.color = color; // displays "green"
-        /* Added 1 log, below (this was below the console.log for Deconstructed Object. */
-        //console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
+        const username = response.username; 
+        const color = response.colors; 
+        data.username = username; 
+        data.color = color; 
+       
     }).then(() => axios.get(`https://api.github.com/users/${data.username}`).then(response => {
-        //console.log(response.data)
-        // const repoNames = res.data.map(repo => repo.name + "\n");
         const { login, followers, following, bio, location, blog, public_repos, id } = response.data;
         console.log(login, followers, following, bio, location, blog, public_repos, id);
     
-        console.log('public repos: ' + public_repos); // 16
-        console.log('followers: ' + followers); // 12
-        console.log('following: ' + following); // 16        
+        console.log('public repos: ' + public_repos); 
+        console.log('followers: ' + followers); 
+        console.log('following: ' + following); 
 
         data.public_repos = JSON.stringify(public_repos);
         data.followers = JSON.stringify(followers);
@@ -51,9 +47,9 @@ return inquirer.prompt([
         queryData.login = login;
         queryData.id = id;
 
-        //console.log(data);
+   
     })).then(() => axios.get(`https://api.github.com/users/${queryData.login}/repos`).then(function(response) {
-        // console.log(response);
+ 
         const repoNames = response.data.map(function(repo) {
             return repo.name;
         });
@@ -69,9 +65,7 @@ return inquirer.prompt([
         console.log('starred: ' + response.data.length);
         const starred = response.data.length;
         data.stars = starred;
-        //console.log('data: ' + data);  // displays whole objct of data, including "username, color, public_repos", "followers", following, and "avatar" Keys.
         return data;
-        //return data.stars;
     })); 
 }
 
@@ -95,15 +89,15 @@ return inquirer.prompt([
           workExpColor: "white"
         },
         pink: {
-          wrapperBackground: "antiquewhite", // blueish color "#879CDF"
-          headerBackground: "#FF8374", // pink
+          wrapperBackground: "antiquewhite", 
+          headerBackground: "#FF8374", 
           headerColor: "white",
           photoBorderColor: "#FF8374",
           middleRowColor: "#879cdf",
           workExpColor: "white"
         },
         red: {
-          wrapperBackground: "antiquewhite", // orangey color #DE9967
+          wrapperBackground: "antiquewhite", 
           headerBackground: "#870603",
           headerColor: "white",
           photoBorderColor: "#870603",
@@ -111,7 +105,7 @@ return inquirer.prompt([
           workExpColor: "white"
         }
       };
-      /* Was only data in parameter below */
+     
         return `<!DOCTYPE html>
         <html lang="en">
         
@@ -435,7 +429,10 @@ return inquirer.prompt([
   }
   
   init();   
-        
+  
+
+
+  
 // avatar url
   // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
 
