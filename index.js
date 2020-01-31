@@ -34,11 +34,12 @@ return inquirer.prompt([
        
     }).then(() => axios.get(`https://api.github.com/users/${data.username}`).then(response => {
         const { login, followers, following, bio, location, blog, public_repos, id } = response.data;
-        console.log(login, followers, following, bio, location, blog, public_repos, id);
+        console.log(response);
+       // console.log(login, followers, following, bio, location, blog, public_repos, id);
     
-        console.log('public repos: ' + public_repos); 
-        console.log('followers: ' + followers); 
-        console.log('following: ' + following); 
+    //    console.log('public repos: ' + public_repos); 
+    //    console.log('followers: ' + followers); 
+    //    console.log('following: ' + following); 
 
         data.public_repos = JSON.stringify(public_repos);
         data.followers = JSON.stringify(followers);
@@ -47,7 +48,15 @@ return inquirer.prompt([
         queryData.login = login;
         queryData.id = id;
 
-   
+        // data Keys used for GenerateHTML() Production
+        data.id = id;
+        data.bio = bio;
+        data.location = location;
+        data.blog = blog;
+        /* Added 1/31/19 */    
+         
+       // queryData.profileImage = `https://avatars1.githubusercontent.com/u/${queryData.id}?v=4`;
+
     })).then(() => axios.get(`https://api.github.com/users/${queryData.login}/repos`).then(function(response) {
  
         const repoNames = response.data.map(function(repo) {
@@ -198,7 +207,7 @@ return inquirer.prompt([
                     position: relative;
                     margin: 0 auto;
                     /* Was -50px, Below */
-                    margin-bottom: -25px;
+                    margin-bottom: -20px;
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
@@ -351,22 +360,21 @@ return inquirer.prompt([
                             <div class="card-body">
                                 <div id="imgWrap" class="photo-header">
                                     <!--Image is Hard-Coded for Now.  Change this later. -->
-                                    <img src="https://avatars1.githubusercontent.com/u/55586107?v=4" class="photo-header"
+                                    <img src="https://avatars1.githubusercontent.com/u/${data.id}?v=4" class="photo-header"
                                         alt="userPic">
                                 </div>
                                 <div id="infoRow" class="row">
                                     <h3 class="photo-header">HI!</h3>
-                                    <h2 class="photo-header">My name is Sean Cumming!</h2>
-                                    <h1 id="workExp" class="photo-header workExp-date">This is where work experience goes.</h1>
+                                    <h2 class="photo-header">My name is ${data.username}!</h2>
                                     <ul class="nav links-nav justify-content-center">
                                         <li class="nav-link">
-                                        <a class="nav-link active" href="#"><i class="fas fa-location-arrow"></i></span></a>
+                                        <a class="nav-link active" href="https://www.google.com/maps/place/${data.location}"><i class="fas fa-location-arrow"></i></span>&nbsp;${data.location}</a>
                                         </li>
                                         <li class="nav-link">
-                                        <a class="nav-link active" href="#"><i class="fab fa-github-alt"></i>&nbsp;Github</a>
+                                        <a class="nav-link active" href="https://github.com/${data.username}"><i class="fab fa-github-alt"></i>&nbsp;Github</a>
                                         </li>
                                         <li class="nav-link">
-                                        <a class="nav-link active" href="#"><i class="fas fa-blog"></i>&nbsp;Blog</a>
+                                        <a class="nav-link active" href="https://${data.username}.github.io"><i class="fas fa-blog"></i>&nbsp;Blog</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -375,7 +383,7 @@ return inquirer.prompt([
                     </div>
                     <div id="mainRow2" class="col-md-12">
                         <div id="h3wrap">
-                        <h4 id="iDescription">This is a description.</h4>
+                        <h4 id="iDescription">${data.bio}</h4>
                         </div>
                         <div id="cardWrap">
                             <div id="inDiv2a" class="card-background">
