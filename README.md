@@ -1,7 +1,5 @@
 GitHub Profile Generator 
 
-## Website for Deployed Application 
-
 ## Table of Contents
 
 * [User-Story] (#User Story)
