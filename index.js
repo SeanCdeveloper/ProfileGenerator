@@ -432,10 +432,3 @@ return inquirer.prompt([
   
 
 
-  
-// avatar url
-  // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
-
-
-// My avatar_url:  "avatar_url": "https://avatars1.githubusercontent.com/u/55586107?v=4
-
