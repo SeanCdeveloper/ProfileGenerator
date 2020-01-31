@@ -1,118 +1,4 @@
-const fs = require("fs");
-const axios = require("axios");
-const inquirer = require("inquirer");
-const util = require("util");
-
-const writeFileAsync = util.promisify(fs.writeFile);
-
-async function promptUser() {
-    let data = {}
-    let queryData = {}
-return inquirer.prompt([
-   {
-       type: "input",
-       message: "Enter your GitHub username",
-       default: "SeanCdeveloper",
-       name: "username"
-   }
-    ,
-   {
-       type: "list",
-       message: "What is your favorite color?",
-       name: "colors",
-       choices: [
-         //"green", "blue", "pink", "red"
-            {name: "green", value: "green"}, {name: "blue", value: "blue"},
-            {name: "pink", value: "pink"}, {name: "red", value: "red"}    
-       ]
-   }
-   ])
-   .then((response) => {
-        const username = response.username; // displays "SeanCdeveloper"
-        const color = response.colors; // displays "green" || selected color
-        data.username = username; // displays "SeanCdeveloper"
-        data.color = color; // displays "green"
-        /* Added 1 log, below (this was below the console.log for Deconstructed Object. */
-        //console.log(data); // displays {username: 'SeanCdeveloper', color: 'green'};
-    }).then(() => axios.get(`https://api.github.com/users/${data.username}`).then(response => {
-        //console.log(response.data)
-        // const repoNames = res.data.map(repo => repo.name + "\n");
-        const { login, followers, following, bio, location, blog, public_repos, id } = response.data;
-        console.log(login, followers, following, bio, location, blog, public_repos, id);
-    
-        console.log('public repos: ' + public_repos); // 16
-        console.log('followers: ' + followers); // 12
-        console.log('following: ' + following); // 16        
-
-        data.public_repos = JSON.stringify(public_repos);
-        data.followers = JSON.stringify(followers);
-        data.following = JSON.stringify(following);
-
-        queryData.login = login;
-        queryData.id = id;
-
-        //console.log(data);
-    })).then(() => axios.get(`https://api.github.com/users/${queryData.login}/repos`).then(function(response) {
-        // console.log(response);
-        const repoNames = response.data.map(function(repo) {
-            return repo.name;
-        });
-        const repoNamesStr = repoNames.join("\n");
-        //console.log("REPOS: \n" + repoNamesStr);
-
-    })).then(() => axios.get(`https://avatars1.githubusercontent.com/u/${queryData.id}?v=4`).then(function(response) {
-        //console.log(response.data);
-        const avatar = response.data;
-        data.avatar = avatar;
-        //return data.avatar;
-    })).then(() => axios.get(`https://api.github.com/users/${queryData.login}/starred`).then(function(response) {
-        console.log('starred: ' + response.data.length);
-        const starred = response.data.length;
-        data.stars = starred;
-        //console.log('data: ' + data);  // displays whole objct of data, including "username, color, public_repos", "followers", following, and "avatar" Keys.
-        return data;
-        //return data.stars;
-    })); 
-}
-
-   function generateHTML(data) {
-    
-    const colors = {
-        green: {
-          wrapperBackground: "antiquewhite", 
-          headerBackground: "green", 
-          headerColor: "black", 
-          photoBorderColor: "green", 
-          middleRowColor: "darkgreen",
-          workExpColor: "black" 
-        },
-        blue: {
-          wrapperBackground: "antiquewhite", 
-          headerBackground: "#086788", 
-          headerColor: "white", 
-          photoBorderColor: "#086788", 
-          middleRowColor: "#063f52",
-          workExpColor: "white"
-        },
-        pink: {
-          wrapperBackground: "antiquewhite", // blueish color "#879CDF"
-          headerBackground: "#FF8374", // pink
-          headerColor: "white",
-          photoBorderColor: "#FF8374",
-          middleRowColor: "#879cdf",
-          workExpColor: "white"
-        },
-        red: {
-          wrapperBackground: "antiquewhite", // orangey color #DE9967
-          headerBackground: "#870603",
-          headerColor: "white",
-          photoBorderColor: "#870603",
-          middleRowColor: "#a40000",
-          workExpColor: "white"
-        }
-      };
-      /* Was only data in parameter below */
-        return `<!DOCTYPE html>
+<!DOCTYPE html>
         <html lang="en">
         
         <head>
@@ -147,7 +33,7 @@ return inquirer.prompt([
         
                 /* This is the #userDiv, below, holding the main bio information  */
                 .wrapper {
-                    background-color: ${colors[data.color].wrapperBackground};
+                    background-color: antiquewhite;
                     padding-top: 3.5em;
                     margin-left: 5%;
                     margin-right: 5%;
@@ -208,8 +94,8 @@ return inquirer.prompt([
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
-                    background-color: ${colors[data.color].headerBackground};
-                    color: ${colors[data.color].headerColor};
+                    background-color: green;
+                    color: black;
                     padding: 12px;
                     width: 95%;
                     border-radius: 6px;
@@ -221,7 +107,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    border: 3px solid ${colors[data.color].photoBorderColor};
+                    border: 3px solid green;
                     box-shadow: rgba(231, 159, 159, 0.3) 4px 1px 20px 4px;
                 }
         
@@ -279,8 +165,8 @@ return inquirer.prompt([
                 .card-background {
                     padding: 20px;
                     border-radius: 6px;
-                    background-color: ${colors[data.color].headerBackground};
-                    color: ${colors[data.color].headerColor};
+                    background-color: green;
+                    color: black;
                     margin: 20px;
                     width: 40%;
                     display: inline-block;
@@ -325,7 +211,7 @@ return inquirer.prompt([
                     /*background: #065788; */
                     width: 100%; 
                     height: 24em;
-                    background-color: ${colors[data.color].middleRowColor};
+                    background-color: darkgreen;
                 }
         
                 #mainRow3 {
@@ -345,7 +231,7 @@ return inquirer.prompt([
                 }
 
                 #iDescription {
-                   color: ${colors[data.color].workExpColor};
+                   color: black;
                 }
             </style>
         
@@ -387,26 +273,26 @@ return inquirer.prompt([
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Public Repositories
-                                    <span id="span1"><br>${data.public_repos}</span>
+                                    <span id="span1"><br>16</span>
                                 </div>
                             </div>
                             <div id="inDiv2a" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Followers
-                                    <span id="span2"><br>${data.followers}</span>
+                                    <span id="span2"><br>13</span>
                                 </div>
                             </div>
                             <br>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     GitHub Stars
-                                    <span id="span3"><br>${data.stars}</span>
+                                    <span id="span3"><br>2</span>
                                 </div>
                             </div>
                             <div id="inDiv2b" class="card-background">
                                 <div id="gitDisplay" class="card-body">
                                     Following
-                                    <span id="span4"><br>${data.following}</span>
+                                    <span id="span4"><br>16</span>
                                 </div>
                             </div>
                         </div>
@@ -417,28 +303,4 @@ return inquirer.prompt([
             </div>
         </body>
         
-        </html>`
-    }
-   
-   async function init() {
-    try {
-      const data = await promptUser();
-      console.log('data before generateHTML: ' + data)
-      
-      const html = generateHTML(data);
-     
-      await writeFileAsync("index.html", html);
-  
-    } catch(err) {
-    console.log(err);
-    }
-  }
-  
-  init();   
-        
-// avatar url
-  // Viewing the Response Object for my profileName: https://api.github.com/users/SeanCdeveloper
-
-
-// My avatar_url:  "avatar_url": "https://avatars1.githubusercontent.com/u/55586107?v=4
-
+        </html>
